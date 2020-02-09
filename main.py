@@ -8,9 +8,16 @@
 # https://github.com/samheather/3DVision/blob/master/old/pyglet-cube.py
 
 import pyglet
+import sys
 
 # Creates the window with a 800 by 800 size
-cubeWindow = pyglet.window.Window(width = 800, height = 800)
+config = pyglet.gl.Config(sample_buffers=1, samples=4)
+
+
+if len(sys.argv) - 1 == 2:
+    cubeWindow = pyglet.window.Window(config=config, width = int(float(sys.argv[1])), height = int(float(sys.argv[2])))
+else:
+    cubeWindow = pyglet.window.Window(config=config, width = 800, height = 800)
 
 # Execute the on_show function when the window has an event
 @cubeWindow.event
